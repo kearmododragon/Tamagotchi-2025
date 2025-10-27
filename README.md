@@ -45,3 +45,7 @@ Interface & Visuals
 Persistence
     Save and load progress (store stats, pet type, and age). - make the game more chill so you can save your pet and have it as a "background" game
     High-score or achievement system (longest survival time).    - sign in and have a "profile" with leaderboards for who kept their pet alive/happiest longest
+
+![alt text](image-1.png)
+![alt text](image.png)
+![alt text](image.png)

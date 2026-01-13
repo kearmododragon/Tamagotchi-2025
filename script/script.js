@@ -3,7 +3,7 @@ console.log("Tamagotchi game loaded");
 let gameInterval;
 
 const pet = {
-    name: "Mousey",
+    name: "Steven",
     hunger: 50,
     happiness: 50,
     energy: 50,
@@ -12,11 +12,21 @@ const pet = {
     nextLevelUpTime: 5,
 }
 
+const animalImages = {
+    dog: "../imgs/dog.png",
+    fish: "../imgs/Fish.png",
+    lion: "../imgs/Lion.png",
+    molerat: "../imgs/mole-rat.png",
+    mouse: "../imgs/Mouse.png",
+    snake: "../imgs/Snake.png",
+}
+
 const buttons = document.querySelectorAll("#feed-btn, #play-btn, #sleep-btn");
 buttons.forEach(btn => btn.disabled = true);
 
 const messageEl = document.getElementById("message");
-const resetBtn = document.getElementById("reset-btn")
+const resetBtn = document.getElementById("reset-btn");
+const animalSelect = document.getElementById("animal-select");
 
 // functions
 
@@ -59,7 +69,7 @@ function endGame(text) {
 
 function resetGame(){
     clearInterval(gameInterval);
-    pet.name = "Mousey";
+    pet.name = "Steven";
     pet.hunger = 50;
     pet.happiness = 50;
     pet.energy = 50;
@@ -100,9 +110,18 @@ document.getElementById("sleep-btn").addEventListener("click", () => {
 document.getElementById("set-name-btn").addEventListener("click", () => {
     const inputName = document.getElementById("name").value.trim();
     if (inputName !== "") {
-        pet.name = inputName;
+        pet.name = inputName.charAt(0).toUpperCase() + inputName.slice(1);
+        pet.animal = animalSelect.value
+        document.getElementById("pet-img").src = animalImages[pet.animal.toLowerCase()];
+        if (pet.animal === "Random"){
+            animalKeys = Object.keys(animalImages)
+            randomIndex = Math.floor(Math.random()* animalKeys.length);
+            pet.animal = animalKeys[randomIndex]
+            document.getElementById("pet-img").src = animalImages[pet.animal];
+        }
         document.getElementById("pet-name").textContent = pet.name;
         document.getElementById("pet-name-input").style.display = "none";
+        document.getElementById("animal-select").style.display = "none";
         buttons.forEach(btn => btn.disabled = false);
         gameInterval = setInterval(() => {
             pet.hunger = Math.max(pet.hunger - 5* pet.level, 0);

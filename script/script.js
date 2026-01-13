@@ -12,12 +12,12 @@ const pet = {
     nextLevelUpTime: 5,
 }
 const animalImages = {
-    dog: "../imgs/dog.png",
-    fish: "../imgs/Fish.png",
-    lion: "../imgs/Lion.png",
-    molerat: "../imgs/mole-rat.png",
-    mouse: "../imgs/Mouse.png",
-    snake: "../imgs/Snake.png",
+    dog: "imgs/dog.png",
+    fish: "imgs/Fish.png",
+    lion: "imgs/Lion.png",
+    molerat: "imgs/mole-rat.png",
+    mouse: "imgs/Mouse.png",
+    snake: "imgs/Snake.png",
 }
 const buttons = document.querySelectorAll("#feed-btn, #play-btn, #sleep-btn");
 buttons.forEach(btn => btn.disabled = true);

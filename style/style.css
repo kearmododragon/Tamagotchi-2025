@@ -20,7 +20,6 @@ body {
   gap: 10px;
   align-items: center;
 }
-
 #animal-choice select {
   width: 200px;
   padding: 8px;
@@ -32,7 +31,6 @@ body {
   text-align: center;
   font-size: 1rem;
 }
-
 #name-row input {
   width: 140px;
   padding: 8px;
@@ -44,12 +42,10 @@ body {
   text-align: center;
   font-size: 1rem;
 }
-
 #name-row input::placeholder {
   color: #ec1fd1;
   font-weight: bold;
 }
-
 #name-row button {
   padding: 8px 12px;
   border-radius: 20px;
@@ -61,16 +57,13 @@ body {
   box-shadow: 0 3px 6px rgba(0,0,0,0.2);
   transition: transform 0.1s;
 }
-
 #name-row button:hover {
   transform: scale(1.05);
 }
-
 #name-row button:active {
   transform: scale(0.9);
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
-
 #game {
   width: 350px;
   height: 520px;
@@ -85,8 +78,6 @@ body {
   padding: 20px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
-
-/* Screen */
 #screen {
   width: 90%;
   height: 65%;
@@ -101,15 +92,12 @@ body {
   box-sizing: border-box;
   margin-top: 65px;
 }
-
-/* Pet image + name */
 #pet {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-
 #pet-img {
   max-width: 150px;
   max-height: 150px;
@@ -117,13 +105,10 @@ body {
   transform: rotate(10deg);
   flex-shrink: 0;
 }
-
 #pet-name, #time-alive, #level {
   color: aliceblue;
   margin: 2px 0;
 }
-
-/* Stats bar */
 #stats {
   display: flex;
   justify-content: space-around;
@@ -135,20 +120,16 @@ body {
   font-size: 0.9rem;
   margin: 0;
 }
-
 #stats p {
   margin: 0 5px;
   font-weight: bold;
 }
-
-/* Controls */
 #controls {
   display: flex;
   justify-content: space-around;
   width: 90%;
   margin-top: 30px;
 }
-
 #controls button {
   padding: 10px 20px;
   border-radius: 20px;
@@ -160,17 +141,13 @@ body {
   box-shadow: 0 3px 6px rgba(0,0,0,0.2);
   transition: transform 0.1s;
 }
-
 #controls button:hover {
   transform: scale(1.05);
 }
-
 #controls button:active {
   transform: scale(0.9);
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
-
-/* Reset button */
 #reset-btn {
   padding: 10px 20px;
   border-radius: 20px;
@@ -183,19 +160,14 @@ body {
   transition: transform 0.1s;
   margin-top: 15px;
 }
-
 #reset-btn:hover {
   transform: scale(1.05);
 }
-
-/* Message */
 #message {
   margin-top: 10px;
   color: #fff;
   font-weight: bold;
 }
-
-/* Wobble animation */
 @keyframes wobble {
   0% { transform: rotate(0deg); }
   25% { transform: rotate(10deg); }
@@ -203,11 +175,9 @@ body {
   75% { transform: rotate(-10deg); }
   100% { transform: rotate(0deg); }
 }
-
 .wobble {
   animation: wobble 0.5s infinite;
 }
-
 .animal-wobble {
   animation: wobble 1s infinite;
 }

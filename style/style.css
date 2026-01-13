@@ -1,28 +1,95 @@
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  background-color: #000000;
-  color: rgba(255, 255, 0, 0.555);
+  background-image: url('../imgs/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;   
+  background-attachment: fixed;
+  color: #1c7262;
+}
+#pet-setup {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+#name-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+#animal-choice select {
+  width: 200px;
+  padding: 8px;
+  border-radius: 20px;
+  border: none;
+  background-color: #222;
+  color: #ec1fd1;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1rem;
+}
+
+#name-row input {
+  width: 140px;
+  padding: 8px;
+  border-radius: 20px;
+  border: none;
+  background-color: #222;
+  color: #ec1fd1;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1rem;
+}
+
+#name-row input::placeholder {
+  color: #ec1fd1;
+  font-weight: bold;
+}
+
+#name-row button {
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: none;
+  background-color: #000;
+  color: #ec1fd1;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  transition: transform 0.1s;
+}
+
+#name-row button:hover {
+  transform: scale(1.05);
+}
+
+#name-row button:active {
+  transform: scale(0.9);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
 #game {
-  width: 350px;      /* a little wider if needed */
-  height: 520px;     /* taller to fit screen, message, buttons */
+  width: 350px;
+  height: 520px;
   margin: 60px auto;
-  background-color: #ec1fd1; 
+  background-image: url(../imgs/game.jpg); 
+  background-size: cover;
   border-radius: 50% / 40%; 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;  /* we’ll control spacing manually */
+  justify-content: flex-start;
   padding: 20px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
-
+/* Screen */
 #screen {
   width: 90%;
-  height: 65%;          /* slightly taller */
+  height: 65%;
   background-color: #333;
   border-radius: 15px;
   display: flex;
@@ -32,13 +99,10 @@ body {
   padding: 15px;
   color: #fff;
   box-sizing: border-box;
-  margin-top: 65px;     /* pushes screen down into the center */
+  margin-top: 65px;
 }
 
-
-
-
-
+/* Pet image + name */
 #pet {
   display: flex;
   flex-direction: column;
@@ -48,27 +112,10 @@ body {
 
 #pet-img {
   max-width: 150px;
-  max-height: 150px; /* keeps all animals proportional */
+  max-height: 150px;
   height: auto;
   transform: rotate(10deg);
   flex-shrink: 0;
-}
-
-#stats {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  background-color: rgba(255,255,255,0.1); /* subtle screen bar for stats */
-  padding: 5px 10px;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  margin: 0; 
-}
-
-#stats p {
-  margin: 0 5px;
-  font-weight: bold;
 }
 
 #pet-name, #time-alive, #level {
@@ -76,19 +123,37 @@ body {
   margin: 2px 0;
 }
 
+/* Stats bar */
+#stats {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  background-color: rgba(255,255,255,0.1);
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+#stats p {
+  margin: 0 5px;
+  font-weight: bold;
+}
+
+/* Controls */
 #controls {
   display: flex;
   justify-content: space-around;
   width: 90%;
-  margin-top: 30px;   /* more space from screen */
+  margin-top: 30px;
 }
-
 
 #controls button {
   padding: 10px 20px;
   border-radius: 20px;
   border: none;
-  background-color: #000000;
+  background-color: #000;
   color: #ec1fd1;
   font-weight: bold;
   cursor: pointer;
@@ -100,6 +165,37 @@ body {
   transform: scale(1.05);
 }
 
+#controls button:active {
+  transform: scale(0.9);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* Reset button */
+#reset-btn {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background-color: #000;
+  color: #ec1fd1;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  transition: transform 0.1s;
+  margin-top: 15px;
+}
+
+#reset-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Message */
+#message {
+  margin-top: 10px;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Wobble animation */
 @keyframes wobble {
   0% { transform: rotate(0deg); }
   25% { transform: rotate(10deg); }
@@ -112,24 +208,14 @@ body {
   animation: wobble 0.5s infinite;
 }
 
-#reset-btn {
-  padding: 10px 20px;
-  border-radius: 20px;       /* same as control buttons */
-  border: none;
-  background-color: #000000; /* match the other buttons */
-  color: #ec1fd1;
+.animal-wobble {
+  animation: wobble 1s infinite;
+}
+.low-stat {
+  color: red;
   font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-  transition: transform 0.1s;
-  margin-top: 15px;          /* add spacing from messages */
 }
-
-#reset-btn:hover {
-  transform: scale(1.05);    /* match hover effect of other buttons */
-}
-#message {
-  margin-top: 10px;  /* space between screen content and messages */
-  color: #fff;       /* keep message visible */
+.high-stat {
+  color: gold;
   font-weight: bold;
 }

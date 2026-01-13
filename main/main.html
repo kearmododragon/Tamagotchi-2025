@@ -5,55 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="main.js" defer></script>
     <link rel="stylesheet" href="../style/style.css" />
-    <title>Tamogotchi</title>
+    <title>Tamagotchi</title>
 </head>
 <body>
   <h1>My Tamagotchi</h1>
-  <div id ="animal-choice">
-    <select id = "animal-select">
-      <option>Dog</option>
-      <option>Fish</option>
-      <option>Lion</option>
-      <option>MoleRat</option>
-      <option>Mouse</option>
-      <option>Snake</option>
-      <option>Random</option>
-      <options>Nothing</options>
-    </select>
-  </div>
-  <div id="pet-name-input">
-  <label for="name">Enter your pet's name:</label>
-  <input type="text" id="name" placeholder="Steven">
-  <button id="set-name-btn">Set Name</button>
-</div>
 
-<div id="game">
-  <div id="screen">
-    <div id="pet">
-      <p id="time-alive"></p>
-      <p id="level"></p>
-      <p id="pet-name">PET</p>
-      <img id="pet-img" src="../imgs/egg.png">
+  <!-- Pet Setup: Dropdown + Name Input + Button -->
+  <div id="pet-setup">
+    <!-- Dropdown on top -->
+    <div id="animal-choice">
+      <select id="animal-select">
+        <option value="" disabled selected>Select your animal</option>
+        <option>Dog</option>
+        <option>Fish</option>
+        <option>Lion</option>
+        <option>MoleRat</option>
+        <option>Mouse</option>
+        <option>Snake</option>
+        <option>Random</option>
+      </select>
     </div>
-    <div id="stats">
-      <p>Fullness: <span id="hunger">50</span></p>
-      <p>Happiness: <span id="happiness">50</span></p>
-      <p>Energy: <span id="energy">50</span></p>
+
+    <!-- Name input + button on same row -->
+    <div id="name-row">
+      <input type="text" id="name" placeholder="Steven">
+      <button id="set-name-btn">Set Name</button>
     </div>
-    <p id="message"></p>
-  </div>
-  <div id="controls">
-    <button id="feed-btn">Feed</button>
-    <button id="play-btn">Play</button>
-    <button id="sleep-btn">Sleep</button>
   </div>
 
-  <button id="reset-btn" style="display:none;">Reset Game</button>
-</div>
+  <!-- Game Container -->
+  <div id="game">
+    <div id="screen">
+      <div id="pet">
+        <p id="time-alive"></p>
+        <p id="level"></p>
+        <p id="pet-name">PET</p>
+        <img id="pet-img" src="../imgs/egg.png">
+      </div>
+      <div id="stats">
+        <p>Fullness: <span id="hunger">50</span></p>
+        <p>Happiness: <span id="happiness">50</span></p>
+        <p>Energy: <span id="energy">50</span></p>
+      </div>
+      <p id="message"></p>
+    </div>
 
+    <div id="controls">
+      <button id="feed-btn">Feed</button>
+      <button id="play-btn">Play</button>
+      <button id="sleep-btn">Sleep</button>
+    </div>
 
-    <p id="message"></p>
-    <button id="reset-btn" style="display: none;">Reset Game</button>
+    <button id="reset-btn" style="display:none;">Reset Game</button>
   </div>
 
 <script src="../script/script.js"></script>

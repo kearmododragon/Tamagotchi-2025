@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="../style/style.css" />
+    <title>Tamogotchi</title>
+</head>
+<body>
+  <h1>My Tamagotchi</h1>
+  <div id="pet-name-input">
+  <label for="name">Enter your pet's name:</label>
+  <input type="text" id="name" placeholder="Mousey">
+  <button id="set-name-btn">Set Name</button>
+</div>
+
+  <div id="game">
+    <div id="pet">
+      <p id="time-alive"></p>
+      <p id="level"></p>
+      <p id="pet-name">PET</p>
+      <img id="pet-img" src="../imgs/1st-animal-mock.png">
+    </div>
+
+    <div id="stats">
+      <p>Fullness: <span id="hunger">50</span></p>
+      <p>Happiness: <span id="happiness">50</span></p>
+      <p>Energy: <span id="energy">50</span></p>
+    </div>
+
+    <div id="controls">
+      <button id="feed-btn">Feed</button>
+      <button id="play-btn">Play</button>
+      <button id="sleep-btn">Sleep</button>
+    </div>
+
+    <p id="message"></p>
+    <button id="reset-btn" style="display: none;">Reset Game</button>
+  </div>
+
+<script src="../script/script.js"></script>
+</body>
+</html>

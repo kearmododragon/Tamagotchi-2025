@@ -1,0 +1,44 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #000000;
+  color: rgba(255, 255, 0, 0.555);
+}
+#stats {
+  color: aliceblue;
+}
+#pet-name {
+  color: aliceblue;
+}
+#game {
+  width: 300px;
+  height: 450px;
+  padding: 20px;
+  margin: 60px auto;
+  background-color: rgba(255, 255, 0, 0.555);
+  border-top-left-radius: 150px 220px;
+  border-top-right-radius: 150px 220px;
+  border-bottom-left-radius: 150px 220px;
+  border-bottom-right-radius: 150px 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+button {
+  margin: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  background-color: red;
+}
+#pet-img {
+    max-width: 150px;
+    max-height: 60%;
+    height: auto;
+}
+#time-alive{
+  color: #000000;
+}
+#level{
+  color: #000000;
+}

@@ -4,41 +4,132 @@ body {
   background-color: #000000;
   color: rgba(255, 255, 0, 0.555);
 }
-#stats {
-  color: aliceblue;
-}
-#pet-name {
-  color: aliceblue;
-}
+
 #game {
-  width: 300px;
-  height: 450px;
-  padding: 20px;
+  width: 350px;      /* a little wider if needed */
+  height: 520px;     /* taller to fit screen, message, buttons */
   margin: 60px auto;
-  background-color: rgba(255, 255, 0, 0.555);
-  border-top-left-radius: 150px 220px;
-  border-top-right-radius: 150px 220px;
-  border-bottom-left-radius: 150px 220px;
-  border-bottom-right-radius: 150px 220px;
+  background-color: #ec1fd1; 
+  border-radius: 50% / 40%; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;  /* we’ll control spacing manually */
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+
+#screen {
+  width: 90%;
+  height: 65%;          /* slightly taller */
+  background-color: #333;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; 
+  padding: 15px;
+  color: #fff;
+  box-sizing: border-box;
+  margin-top: 65px;     /* pushes screen down into the center */
+}
+
+
+
+
+
+#pet {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-button {
-  margin: 5px;
-  padding: 8px 12px;
-  cursor: pointer;
-  background-color: red;
-}
+
 #pet-img {
-    max-width: 150px;
-    max-height: 60%;
-    height: auto;
+  max-width: 150px;
+  max-height: 150px; /* keeps all animals proportional */
+  height: auto;
+  transform: rotate(10deg);
+  flex-shrink: 0;
 }
-#time-alive{
-  color: #000000;
+
+#stats {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  background-color: rgba(255,255,255,0.1); /* subtle screen bar for stats */
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  margin: 0; 
 }
-#level{
-  color: #000000;
+
+#stats p {
+  margin: 0 5px;
+  font-weight: bold;
+}
+
+#pet-name, #time-alive, #level {
+  color: aliceblue;
+  margin: 2px 0;
+}
+
+#controls {
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+  margin-top: 30px;   /* more space from screen */
+}
+
+
+#controls button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background-color: #000000;
+  color: #ec1fd1;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  transition: transform 0.1s;
+}
+
+#controls button:hover {
+  transform: scale(1.05);
+}
+
+@keyframes wobble {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(10deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.wobble {
+  animation: wobble 0.5s infinite;
+}
+
+#reset-btn {
+  padding: 10px 20px;
+  border-radius: 20px;       /* same as control buttons */
+  border: none;
+  background-color: #000000; /* match the other buttons */
+  color: #ec1fd1;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  transition: transform 0.1s;
+  margin-top: 15px;          /* add spacing from messages */
+}
+
+#reset-btn:hover {
+  transform: scale(1.05);    /* match hover effect of other buttons */
+}
+#message {
+  margin-top: 10px;  /* space between screen content and messages */
+  color: #fff;       /* keep message visible */
+  font-weight: bold;
 }

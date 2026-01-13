@@ -55,7 +55,7 @@ function checkGameStatus() {
     }
     if (pet.time >= pet.nextLevelUpTime){
         pet.level +=1;
-        pet.nextLevelUpTime += 5;
+        pet.nextLevelUpTime += 10;
         messageEl.textContent = `${pet.name} Levelled up!`
     }
 }
@@ -78,6 +78,7 @@ function resetGame(){
     updateStats()
     buttons.forEach(btn => btn.disabled = true);
     document.getElementById("pet-name-input").style.display = "block";
+    document.getElementById("animalSelect").style.display = "block";
 }
 
 //event listeners
@@ -111,27 +112,32 @@ document.getElementById("set-name-btn").addEventListener("click", () => {
     const inputName = document.getElementById("name").value.trim();
     if (inputName !== "") {
         pet.name = inputName.charAt(0).toUpperCase() + inputName.slice(1);
-        pet.animal = animalSelect.value
-        document.getElementById("pet-img").src = animalImages[pet.animal.toLowerCase()];
-        if (pet.animal === "Random"){
-            animalKeys = Object.keys(animalImages)
-            randomIndex = Math.floor(Math.random()* animalKeys.length);
-            pet.animal = animalKeys[randomIndex]
-            document.getElementById("pet-img").src = animalImages[pet.animal];
-        }
-        document.getElementById("pet-name").textContent = pet.name;
+        pet.animal = animalSelect.value;
         document.getElementById("pet-name-input").style.display = "none";
         document.getElementById("animal-select").style.display = "none";
-        buttons.forEach(btn => btn.disabled = false);
-        gameInterval = setInterval(() => {
-            pet.hunger = Math.max(pet.hunger - 5* pet.level, 0);
-            pet.energy = Math.max(pet.energy -5* pet.level, 0);
-            pet.happiness = Math.max(pet.happiness -5* pet.level, 0);
-            pet.time = Math.max(pet.time +1, 0)
-            console.log(pet.time);
-            updateStats();
-            checkGameStatus();
-        }, 1000);
+        document.getElementById("pet-name").textContent = pet.name;
+        if (pet.animal === "Random") {
+            const animalKeys = Object.keys(animalImages);
+            const randomIndex = Math.floor(Math.random() * animalKeys.length);
+            pet.animal = animalKeys[randomIndex];
+        }
+        const eggImg = document.getElementById("pet-img");
+        eggImg.classList.add("wobble");
+        const delay = Math.floor(Math.random() * 4000) + 1000;
+        setTimeout(() => {
+            eggImg.classList.remove("wobble");
+            document.getElementById("pet-img").src = animalImages[pet.animal.toLowerCase()];
+            buttons.forEach(btn => btn.disabled = false);
+            gameInterval = setInterval(() => {
+                pet.hunger = Math.max(pet.hunger - 5 * pet.level, 0);
+                pet.energy = Math.max(pet.energy - 5 * pet.level, 0);
+                pet.happiness = Math.max(pet.happiness - 5 * pet.level, 0);
+                pet.time = Math.max(pet.time + 1, 0);
+                updateStats();
+                checkGameStatus();
+            }, 1000);
+
+        }, delay); 
     }
 });
 

@@ -23,29 +23,34 @@
   </div>
   <div id="pet-name-input">
   <label for="name">Enter your pet's name:</label>
-  <input type="text" id="name" placeholder="Mousey">
+  <input type="text" id="name" placeholder="Steven">
   <button id="set-name-btn">Set Name</button>
 </div>
 
-  <div id="game">
+<div id="game">
+  <div id="screen">
     <div id="pet">
       <p id="time-alive"></p>
       <p id="level"></p>
       <p id="pet-name">PET</p>
-      <img id="pet-img" src="">
+      <img id="pet-img" src="../imgs/egg.png">
     </div>
-
     <div id="stats">
       <p>Fullness: <span id="hunger">50</span></p>
       <p>Happiness: <span id="happiness">50</span></p>
       <p>Energy: <span id="energy">50</span></p>
     </div>
+    <p id="message"></p>
+  </div>
+  <div id="controls">
+    <button id="feed-btn">Feed</button>
+    <button id="play-btn">Play</button>
+    <button id="sleep-btn">Sleep</button>
+  </div>
 
-    <div id="controls">
-      <button id="feed-btn">Feed</button>
-      <button id="play-btn">Play</button>
-      <button id="sleep-btn">Sleep</button>
-    </div>
+  <button id="reset-btn" style="display:none;">Reset Game</button>
+</div>
+
 
     <p id="message"></p>
     <button id="reset-btn" style="display: none;">Reset Game</button>

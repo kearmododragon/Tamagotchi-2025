@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/script/script.js" defer></script>
-    <link rel="stylesheet" href="/style/style.css" />
+    <script src="script/script.js" defer></script>
+    <link rel="stylesheet" href="style/style.css" />
     <title>Tamagotchi</title>
 </head>
 <body>
@@ -12,7 +12,6 @@
 
   <!-- Pet Setup: Dropdown + Name Input + Button -->
   <div id="pet-setup">
-    <!-- Dropdown on top -->
     <div id="animal-choice">
       <select id="animal-select">
         <option value="" disabled selected>Select your animal</option>
@@ -26,21 +25,19 @@
       </select>
     </div>
 
-    <!-- Name input + button on same row -->
     <div id="name-row">
       <input type="text" id="name" placeholder="Steven">
       <button id="set-name-btn">Set Name</button>
     </div>
   </div>
 
-  <!-- Game Container -->
   <div id="game">
     <div id="screen">
       <div id="pet">
         <p id="time-alive"></p>
         <p id="level"></p>
         <p id="pet-name">PET</p>
-        <img id="pet-img" src="/imgs/egg.png">
+        <img id="pet-img" src="imgs/egg.png">
       </div>
       <div id="stats">
         <p>Fullness: <span id="hunger">50</span></p>
@@ -58,7 +55,5 @@
 
     <button id="reset-btn" style="display:none;">Reset Game</button>
   </div>
-
-<script src="/script/script.js"></script>
 </body>
 </html>

@@ -18,12 +18,12 @@ const animalImages = {
     snake: "imgs/Snake.png",
 }
 const animalMusic = {
-    dog: "sounds/Dog.png",
-    fish: "sounds/Fish.png",
-    lion: "sounds/Lion.png",
-    molerat: "sounds/MoleRat.png",
-    mouse: "sounds/Mouse.png",
-    snake: "sounds/Snake.png",
+    dog: "sounds/Dog.mp3",
+    fish: "sounds/Fish.mp3",
+    lion: "sounds/Lion.mp3",
+    molerat: "sounds/MoleRat.mp3",
+    mouse: "sounds/Mouse.mp3",
+    snake: "sounds/Snake.mp3",
 }
 const buttons = document.querySelectorAll("#feed-btn, #play-btn, #sleep-btn");
 buttons.forEach(btn => btn.disabled = true);

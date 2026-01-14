@@ -1,5 +1,8 @@
 let gameInterval;
 let petAlive = false;
+let backgroundMusic = new Audio();
+backgroundMusic.loop = true;
+let highScores = [];
 const pet = {
     name: "Steven",
     hunger: 50,
@@ -25,6 +28,7 @@ const animalMusic = {
     mouse: "sounds/Mouse.mp3",
     snake: "sounds/Snake.mp3",
 }
+
 const buttons = document.querySelectorAll("#feed-btn, #play-btn, #sleep-btn");
 buttons.forEach(btn => btn.disabled = true);
 const messageEl = document.getElementById("message");
@@ -34,7 +38,7 @@ const hungerEl = document.getElementById("hunger");
 const happinessEl = document.getElementById("happiness");
 const energyEl = document.getElementById("energy");
 const newAudio = new Audio("sounds/Click.mp3");
-const gameOver = new Audio("sounds/GameOver.mp3"); 
+const gameOver = new Audio("sounds/GameOver.mp3");
 
 // functions
 function updateStats() {
@@ -54,11 +58,11 @@ function updateStats() {
     energyEl.classList.toggle("high-stat", pet.energy > 90);
 }
 function checkGameStatus() {
-    if (pet.hunger < 20){
+    if (pet.hunger < 20) {
         messageEl.textContent = `Warning! ${pet.name} is hungry.`
-    } else if (pet.happiness < 20){
+    } else if (pet.happiness < 20) {
         messageEl.textContent = `Warning! ${pet.name} is sad.`
-    } else if (pet.energy < 20){
+    } else if (pet.energy < 20) {
         messageEl.textContent = `Warning! ${pet.name} is tired.`
     }
     if (pet.hunger == 0) {
@@ -68,8 +72,8 @@ function checkGameStatus() {
     } else if (pet.energy == 0) {
         endGame(`${pet.name} is exhausted! The baby!. Game over!`)
     }
-    if (pet.time >= pet.nextLevelUpTime){
-        pet.level +=1;
+    if (pet.time >= pet.nextLevelUpTime) {
+        pet.level += 1;
         pet.nextLevelUpTime += 10;
         messageEl.textContent = `${pet.name} Levelled up!`
     }
@@ -83,8 +87,17 @@ function endGame(text) {
     petAlive = false
     stopAnimalWobble();
     gameOverSound();
+    stopAnimalMusic();
+    const score = {
+        name: pet.name,
+        animal: pet.animal,
+        time: pet.time,
+        level: pet.level,
+    };
+    highScores.push(score);
+    renderScoreboard();
 }
-function resetGame(){
+function resetGame() {
     clearInterval(gameInterval);
     pet.name = "Steven";
     pet.hunger = 50;
@@ -101,10 +114,10 @@ function resetGame(){
     resetBtn.style.display = "none";
 }
 function updateAnimalWobble() {
-    if(!petAlive) return;
+    if (!petAlive) return;
     const petImg = document.getElementById("pet-img");
     const baseDuration = 1;
-    const speed = Math.max(0.3, baseDuration - (pet.level - 1) * 0.1); 
+    const speed = Math.max(0.3, baseDuration - (pet.level - 1) * 0.1);
     petImg.style.animation = `wobble ${speed}s infinite`;
     petImg.classList.add("animal-wobble");
 }
@@ -113,12 +126,35 @@ function stopAnimalWobble() {
     petImg.classList.remove("animal-wobble");
     petImg.style.animation = "";
 }
-function playClickSound(){
+function playClickSound() {
     newAudio.currentTime = 0;
     newAudio.play();
 }
-function gameOverSound(){
+function gameOverSound() {
     gameOver.play()
+}
+function playAnimalMusic(animal) {
+    if (!animalMusic[animal]) return;
+    backgroundMusic.pause();
+    backgroundMusic.currentTime = 0;
+    backgroundMusic.src = animalMusic[animal];
+    backgroundMusic.play();
+}
+function stopAnimalMusic() {
+    backgroundMusic.pause();
+    backgroundMusic.currentTime = 0;
+}
+function renderScoreboard() {
+    const scoreList = document.getElementById("score-list");
+    scoreList.innerHTML = "";
+    const sortedScores = [...highScores].sort((a, b) => b.time - a.time);
+    const topScores = sortedScores.slice(0, 5);
+    topScores.forEach(score => {
+        const row = document.createElement("div");
+        row.textContent = `${score.name} | ${score.animal} | ${score.time} | ${score.level}`;
+        scoreList.appendChild(row);
+        row.classList.add("score-row");
+    })
 }
 //event listeners
 document.getElementById("feed-btn").addEventListener("click", () => {
@@ -145,14 +181,14 @@ document.getElementById("sleep-btn").addEventListener("click", () => {
 })
 document.getElementById("set-name-btn").addEventListener("click", () => {
     const inputName = document.getElementById("name").value.trim();
-    const selectedAnimal = animalSelect.value; 
+    const selectedAnimal = animalSelect.value;
     playClickSound();
     if (inputName !== "") {
         pet.name = inputName.charAt(0).toUpperCase() + inputName.slice(1);
     }
     if (!selectedAnimal) {
         messageEl.textContent = "Please select an animal to start!";
-        return; 
+        return;
     }
     pet.animal = selectedAnimal;
     document.getElementById("pet-setup").style.display = "none";
@@ -171,6 +207,7 @@ document.getElementById("set-name-btn").addEventListener("click", () => {
         eggImg.classList.remove("wobble");
         document.getElementById("pet-img").src = animalImages[pet.animal.toLowerCase()];
         buttons.forEach(btn => btn.disabled = false);
+        playAnimalMusic(pet.animal.toLowerCase());
         gameInterval = setInterval(() => {
             pet.hunger = Math.max(pet.hunger - 5 * pet.level, 0);
             pet.energy = Math.max(pet.energy - 5 * pet.level, 0);
@@ -181,7 +218,7 @@ document.getElementById("set-name-btn").addEventListener("click", () => {
         }, 1000);
     }, delay);
 });
-document.getElementById("reset-btn").addEventListener("click", ()=> {
+document.getElementById("reset-btn").addEventListener("click", () => {
     playClickSound();
     resetGame()
 })

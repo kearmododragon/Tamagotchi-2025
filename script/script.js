@@ -1,7 +1,5 @@
-console.log("Tamagotchi game loaded");
-
 let gameInterval;
-
+let petAlive = false;
 const pet = {
     name: "Steven",
     hunger: 50,
@@ -21,15 +19,15 @@ const animalImages = {
 }
 const buttons = document.querySelectorAll("#feed-btn, #play-btn, #sleep-btn");
 buttons.forEach(btn => btn.disabled = true);
-
 const messageEl = document.getElementById("message");
 const resetBtn = document.getElementById("reset-btn");
 const animalSelect = document.getElementById("animal-select");
 const hungerEl = document.getElementById("hunger");
 const happinessEl = document.getElementById("happiness");
 const energyEl = document.getElementById("energy");
+const newAudio = new Audio("sounds/Click.mp3");
+const gameOver = new Audio("sounds/GameOver.mp3"); 
 
-let petAlive = false
 // functions
 function updateStats() {
     document.getElementById("hunger").textContent = pet.hunger
@@ -76,6 +74,7 @@ function endGame(text) {
     resetBtn.style.display = "inline-block"
     petAlive = false
     stopAnimalWobble();
+    gameOverSound();
 }
 function resetGame(){
     clearInterval(gameInterval);
@@ -89,7 +88,7 @@ function resetGame(){
     updateStats();
     buttons.forEach(btn => btn.disabled = true);
     document.getElementById("pet-setup").style.display = "flex";
-    document.getElementById("pet-img").src = "../imgs/egg.png";
+    document.getElementById("pet-img").src = "imgs/egg.png";
     messageEl.textContent = "";
     resetBtn.style.display = "none";
 }
@@ -106,33 +105,40 @@ function stopAnimalWobble() {
     petImg.classList.remove("animal-wobble");
     petImg.style.animation = "";
 }
-
+function playClickSound(){
+    newAudio.currentTime = 0;
+    newAudio.play();
+}
+function gameOverSound(){
+    gameOver.play()
+}
 //event listeners
 document.getElementById("feed-btn").addEventListener("click", () => {
     pet.hunger = Math.min(pet.hunger + 10, 100)
     pet.happiness = Math.min(pet.happiness + 5, 100)
+    playClickSound();
     updateStats();
     checkGameStatus();
-    console.log("feed")
 })
 document.getElementById("play-btn").addEventListener("click", () => {
     pet.energy = Math.max(pet.energy - 10, 0)
     pet.hunger = Math.max(pet.hunger - 5, 0)
     pet.happiness = Math.min(pet.happiness + 10, 100)
+    playClickSound();
     updateStats();
     checkGameStatus();
-    console.log("play")
 })
 document.getElementById("sleep-btn").addEventListener("click", () => {
     pet.energy = Math.min(pet.energy + 50, 100)
     pet.hunger = Math.max(pet.hunger - 5, 0)
+    playClickSound();
     updateStats();
     checkGameStatus();
-    console.log("sleep")
 })
 document.getElementById("set-name-btn").addEventListener("click", () => {
     const inputName = document.getElementById("name").value.trim();
     const selectedAnimal = animalSelect.value; 
+    playClickSound();
     if (inputName !== "") {
         pet.name = inputName.charAt(0).toUpperCase() + inputName.slice(1);
     }
@@ -168,7 +174,7 @@ document.getElementById("set-name-btn").addEventListener("click", () => {
     }, delay);
 });
 document.getElementById("reset-btn").addEventListener("click", ()=> {
-    console.log("reset clicked")
+    playClickSound();
     resetGame()
 })
 updateStats();

@@ -16,14 +16,12 @@ Warning messages when the pet is low on stats and a message for game over.
 
 Using template literals, the pet's name is used multiple times. In all messages and above the characters image. 
 
-I consider this game now complete in it's current status. 
+I've upgraded the images, rather than using block colour i've made use of free images for the game and background.
 
-For the next steps on the game, the following will be implimented: 
+You can now choose your pet from a drop down list. Coded so I can add/remove animals with ease.
 
-Better image: Currently an image of a rat that was supposed to have a transparent background but doesn't.
+When you select your animal, you will start as an egg that will hatch at a random time (under 5 seconds) and only then the game starts
 
-Choice of pet: Choose from a drop down menu of multiple pets
+General ui upgrade to look cleaner
 
-Start with an egg: Level 0 will be just an egg that will hatch (currently starts level 1)
-
-Better looking ui: Rounded buttons and nicer display.
+High score table updated

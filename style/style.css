@@ -189,3 +189,50 @@ body {
   color: gold;
   font-weight: bold;
 }
+#scoreboard {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 220px;
+  background-color: rgba(0,0,0,0.7);
+  color: #ec1fd1;
+  border-radius: 15px;
+  padding: 10px;
+  font-size: 0.9rem;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+#scoreboard h3 {
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+#score-list div {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding: 2px 0;
+}
+#score-list div:last-child {
+  border-bottom: none;
+}
+#score-headers {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(255,255,255,0.5);
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+#score-headers span {
+  flex: 1;
+  text-align: center;
+}
+#score-list div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+
+#score-list div span {
+  flex: 1;
+  text-align: center;
+}

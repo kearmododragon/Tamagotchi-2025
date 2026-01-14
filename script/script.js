@@ -151,10 +151,20 @@ function renderScoreboard() {
     const topScores = sortedScores.slice(0, 5);
     topScores.forEach(score => {
         const row = document.createElement("div");
-        row.textContent = `${score.name} | ${score.animal} | ${score.time} | ${score.level}`;
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = score.name;
+        const animalSpan = document.createElement("span");
+        animalSpan.textContent = score.animal.charAt(0).toUpperCase() + score.animal.slice(1);
+        const timeSpan = document.createElement("span");
+        timeSpan.textContent = score.time;
+        const levelSpan = document.createElement("span");
+        levelSpan.textContent = score.level;
+        row.appendChild(nameSpan);
+        row.appendChild(animalSpan);
+        row.appendChild(timeSpan);
+        row.appendChild(levelSpan);
         scoreList.appendChild(row);
-        row.classList.add("score-row");
-    })
+    });
 }
 //event listeners
 document.getElementById("feed-btn").addEventListener("click", () => {

@@ -17,6 +17,14 @@ const animalImages = {
     mouse: "imgs/Mouse.png",
     snake: "imgs/Snake.png",
 }
+const animalMusic = {
+    dog: "sounds/Dog.png",
+    fish: "sounds/Fish.png",
+    lion: "sounds/Lion.png",
+    molerat: "sounds/MoleRat.png",
+    mouse: "sounds/Mouse.png",
+    snake: "sounds/Snake.png",
+}
 const buttons = document.querySelectorAll("#feed-btn, #play-btn, #sleep-btn");
 buttons.forEach(btn => btn.disabled = true);
 const messageEl = document.getElementById("message");
